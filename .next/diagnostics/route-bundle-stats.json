@@ -1,11 +1,11 @@
 [
   {
     "route": "/studio/[[...tool]]",
-    "firstLoadUncompressedJsBytes": 5868413,
+    "firstLoadUncompressedJsBytes": 5868719,
     "firstLoadChunkPaths": [
       ".next/static/chunks/0nkslnu.o14uz.js",
       ".next/static/chunks/0z~ushb1zv_.b.js",
-      ".next/static/chunks/0f2_wu6iqdce-.js",
+      ".next/static/chunks/0s9f2cm69jriv.js",
       ".next/static/chunks/0x.xx.nxw9~lc.js",
       ".next/static/chunks/12a9~_de9_-p2.js",
       ".next/static/chunks/154uj_lr8ye19.js",

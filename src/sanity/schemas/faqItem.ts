@@ -44,6 +44,21 @@ export const faqItem = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      description: 'Broad topic grouping for the FAQ index page.',
+      options: {
+        list: [
+          { title: 'General', value: 'general' },
+          { title: 'Booking', value: 'booking' },
+          { title: 'Safety', value: 'safety' },
+          { title: 'Services', value: 'services' },
+          { title: 'Employers', value: 'employers' },
+        ],
+      },
+    }),
+    defineField({
       name: 'serviceCategory',
       title: 'Service Category',
       type: 'string',
