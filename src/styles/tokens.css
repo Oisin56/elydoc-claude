@@ -1,0 +1,16 @@
+:root {
+  /* ─── Colours ─────────────────────────────────────────────────────────── */
+  --color-background:   #F8F6F2;
+  --color-text:         #1A1A18;
+  --color-accent:       #2A6B6B;
+  --color-accent-hover: #1F5252;
+  --color-subtle:       #EFEDE8;
+  --color-footer:       #1A1A18;
+  --color-footer-text:  #F8F6F2;
+
+  /* ─── Typography ──────────────────────────────────────────────────────── */
+  /* These are overridden at the html element level by next/font variables.  */
+  /* Kept here as documentation and fallback.                                */
+  --font-headline: Fraunces, serif;
+  --font-body:     Inter, sans-serif;
+}

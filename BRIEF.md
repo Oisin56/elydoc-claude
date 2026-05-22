@@ -103,5 +103,4 @@ Links to Zanda booking URL stored in Sanity SiteSettings. Do not vary the CTA la
 - Use `generateMetadata()` on every page
 - Build mobile-first
 - Flag any conflict between this brief and technical best practice rather than silently overriding
-- Flag any generated copy near clinical scope or prescription services for doctor review
-- Do not add unrequested features or pages
+- Don't add unrequested pages
