@@ -1,7 +1,7 @@
 {
   "pages": {},
   "app": {
-    "[project]/Desktop/ElyDoc-Claude/elydoc-claude/app/studio/[[...tool]]/page": [
+    "[project]/Desktop/ElyDoc-Claude/elydoc-claude/src/app/studio/[[...tool]]/page": [
       "static/media/791bf8c4bb753ed6-s.p.0524igg32t-c1.woff2",
       "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2"
     ]

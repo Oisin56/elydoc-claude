@@ -1,0 +1,212 @@
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+
+const services = [
+  { label: 'GP Consultations', href: '/gp-consultations' },
+  { label: 'Weight Management', href: '/weight-management' },
+  { label: 'Hair Loss', href: '/hair-loss' },
+  { label: 'Sick Certification', href: '/sick-certification' },
+  { label: 'Referrals & Prescriptions', href: '/referrals-prescriptions' },
+]
+
+// Booking URL will be sourced from Sanity SiteSettings once wired up
+const BOOKING_URL = '#book-consultation'
+
+export default function Nav() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') setServicesOpen(false)
+    }
+    function onClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('mousedown', onClickOutside)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('mousedown', onClickOutside)
+    }
+  }, [])
+
+  return (
+    <header className="sticky top-0 z-50 bg-background border-b border-subtle">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16 lg:h-20"
+      >
+        {/* Wordmark */}
+        <Link
+          href="/"
+          className="font-headline text-xl lg:text-2xl text-text tracking-tight"
+        >
+          ElyDoc
+        </Link>
+
+        {/* Desktop links */}
+        <div className="hidden lg:flex items-center gap-8">
+          {/* Services dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button
+              onClick={() => setServicesOpen((o) => !o)}
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+              className="flex items-center gap-1.5 text-sm text-text hover:text-accent transition-colors"
+            >
+              Services
+              <ChevronDown open={servicesOpen} />
+            </button>
+
+            {servicesOpen && (
+              <div
+                role="menu"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-background border border-subtle rounded py-1.5 shadow-sm"
+              >
+                {services.map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    role="menuitem"
+                    onClick={() => setServicesOpen(false)}
+                    className="block px-4 py-2 text-sm text-text hover:text-accent hover:bg-subtle transition-colors"
+                  >
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link href="/about" className="text-sm text-text hover:text-accent transition-colors">
+            About
+          </Link>
+
+          <Link href="/blog" className="text-sm text-text hover:text-accent transition-colors">
+            Blog
+          </Link>
+
+          <Link
+            href={BOOKING_URL}
+            className="text-sm px-5 py-2.5 rounded bg-accent text-background hover:bg-accent-dark transition-colors"
+          >
+            Book a Consultation
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen((o) => !o)}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
+          className="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
+        >
+          <span
+            className={`block h-px w-6 bg-text origin-center transition-transform duration-200 ${
+              mobileOpen ? 'translate-y-[6px] rotate-45' : ''
+            }`}
+          />
+          <span
+            className={`block h-px w-6 bg-text transition-opacity duration-200 ${
+              mobileOpen ? 'opacity-0' : ''
+            }`}
+          />
+          <span
+            className={`block h-px w-6 bg-text origin-center transition-transform duration-200 ${
+              mobileOpen ? '-translate-y-[6px] -rotate-45' : ''
+            }`}
+          />
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          id="mobile-menu"
+          className="lg:hidden border-t border-subtle bg-background px-6 py-8 space-y-8"
+        >
+          <div>
+            <p className="text-xs font-medium uppercase tracking-widest text-text mb-4" style={{ opacity: 0.45 }}>
+              Services
+            </p>
+            <ul className="space-y-4">
+              {services.map((s) => (
+                <li key={s.href}>
+                  <Link
+                    href={s.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm text-text hover:text-accent transition-colors"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <ul className="space-y-4">
+            <li>
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className="text-sm text-text hover:text-accent transition-colors"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                onClick={() => setMobileOpen(false)}
+                className="text-sm text-text hover:text-accent transition-colors"
+              >
+                Blog
+              </Link>
+            </li>
+          </ul>
+
+          <Link
+            href={BOOKING_URL}
+            onClick={() => setMobileOpen(false)}
+            className="inline-block text-sm px-5 py-2.5 rounded bg-accent text-background hover:bg-accent-dark transition-colors"
+          >
+            Book a Consultation
+          </Link>
+        </div>
+      )}
+    </header>
+  )
+}
+
+function ChevronDown({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+      className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+    >
+      <path
+        d="M2 4l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}

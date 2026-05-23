@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import config from '../../../sanity.config'
+import config from '../../../../sanity.config'
 
 // Sanity Studio uses browser-only APIs — load entirely client-side
 const NextStudio = dynamic(

@@ -1,11 +1,19 @@
 @import "tailwindcss";
-@import "../src/styles/tokens.css";
+@import "../styles/tokens.css";
 
+/*
+  @theme inline registers our CSS custom properties as Tailwind utilities.
+  The self-referential pattern (--color-x: var(--color-x)) is intentional:
+  the right-hand var() resolves to the value defined in tokens.css (already
+  imported above), and Tailwind exposes it as a utility class (e.g. bg-background,
+  text-accent). "inline" tells Tailwind to emit CSS variables rather than
+  static values, so runtime token overrides work correctly.
+*/
 @theme inline {
   --color-background:   var(--color-background);
   --color-text:         var(--color-text);
   --color-accent:       var(--color-accent);
-  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-dark:  var(--color-accent-dark);
   --color-subtle:       var(--color-subtle);
   --color-footer:       var(--color-footer);
   --color-footer-text:  var(--color-footer-text);
