@@ -16,6 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://elydoc.ie'),
   title: {
     default: 'ElyDoc — Online GP Consultations Ireland',
     template: '%s | ElyDoc',

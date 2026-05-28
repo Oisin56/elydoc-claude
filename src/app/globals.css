@@ -40,3 +40,24 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
 }
+
+/*
+  Respect the user's motion preference.
+  Disables smooth scrolling, all CSS transitions and animations —
+  this covers the global scroll-behavior, tile hover transforms,
+  image scale effects and any other animated elements.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

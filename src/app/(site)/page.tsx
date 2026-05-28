@@ -8,25 +8,79 @@ import EmployerSection from '@/components/home/EmployerSection'
 import BlogPreviewSection from '@/components/home/BlogPreviewSection'
 import FinalCTASection from '@/components/home/FinalCTASection'
 
-export const metadata: Metadata = {
-  title: 'ElyDoc — Online GP Ireland | Online Doctor Ireland',
-  description:
-    'Doctor-led online GP consultations in Ireland. Speak with a vocationally trained GP from anywhere in Ireland. Private, confidential, and convenient.',
-  keywords: [
-    'online GP Ireland',
-    'online doctor Ireland',
-    'private GP online Ireland',
-    'online GP consultation Ireland',
-    'online doctor consultation Ireland',
-  ],
-  openGraph: {
-    title: 'ElyDoc — Online GP Ireland | Online Doctor Ireland',
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'ElyDoc — Online GP Consultations Ireland',
     description:
-      'Doctor-led online GP consultations in Ireland. Speak with a vocationally trained GP from anywhere in Ireland.',
-    url: 'https://elydoc.ie',
-    siteName: 'ElyDoc',
-    locale: 'en_IE',
-    type: 'website',
+      'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council. Same day appointments available.',
+    keywords: [
+      'online GP Ireland',
+      'online doctor Ireland',
+      'private GP online Ireland',
+      'online GP consultation Ireland',
+      'online doctor consultation Ireland',
+    ],
+    alternates: {
+      canonical: 'https://elydoc.ie',
+    },
+    openGraph: {
+      title: 'ElyDoc — Online GP Consultations Ireland',
+      description:
+        'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council.',
+      url: 'https://elydoc.ie',
+      siteName: 'ElyDoc',
+      locale: 'en_IE',
+      type: 'website',
+      images: [
+        {
+          url: '/images/og-default.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'ElyDoc — Online GP Consultations Ireland',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'ElyDoc — Online GP Consultations Ireland',
+      description:
+        'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council.',
+      images: ['/images/og-default.jpg'],
+    },
+  }
+}
+
+const medicalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'ElyDoc',
+  alternateName: 'Ely Health and Wellness Group',
+  url: 'https://elydoc.ie',
+  description: 'Doctor-led online healthcare for suitable conditions in Ireland.',
+  medicalSpecialty: 'General Practice',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'IE',
+  },
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'ElyDoc',
+  alternateName: 'Ely Health and Wellness Group',
+  url: 'https://elydoc.ie',
+  description: 'Doctor-led online healthcare for suitable conditions in Ireland.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '77 Camden Street Lower',
+    addressLocality: 'Dublin',
+    addressCountry: 'IE',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@elydoc.ie',
+    contactType: 'customer service',
   },
 }
 
@@ -35,6 +89,14 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <HeroSection />
       <ConvenienceSection />
       <ServicesSection />

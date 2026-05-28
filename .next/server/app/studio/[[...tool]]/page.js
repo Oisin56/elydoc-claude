@@ -1,8 +1,8 @@
 var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/studio/[[...tool]]/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0gew05f._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__04f2hgj._.js")
 R.c("server/chunks/ssr/0-w5_next_dist_0nfqope._.js")
 R.c("server/chunks/ssr/0-w5_next_dist_esm_build_templates_app-page_0oh9w1d.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0ahg7yo._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1266fiq._.js")
 R.c("server/chunks/ssr/0-w5_next_dist_00i~~x-._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__09usjhi._.js")
 R.c("server/chunks/ssr/0-w5_next_dist_client_components_0nym8ir._.js")
@@ -10,5 +10,5 @@ R.c("server/chunks/ssr/0-w5_next_dist_client_components_builtin_forbidden_01ylvl
 R.c("server/chunks/ssr/0-w5_next_dist_client_components_builtin_unauthorized_0at73hz.js")
 R.c("server/chunks/ssr/0-w5_next_dist_client_components_builtin_global-error_10dj56x.js")
 R.c("server/chunks/ssr/0hro_elydoc-claude__next-internal_server_app_studio_[[___tool]]_page_actions_0zxphjd.js")
-R.m(95702)
-module.exports=R.m(95702).exports
+R.m(495702)
+module.exports=R.m(495702).exports
