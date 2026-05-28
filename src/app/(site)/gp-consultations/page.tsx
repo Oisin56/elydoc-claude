@@ -244,7 +244,7 @@ function PriceBadge() {
 
 function PageHeader() {
   return (
-    <section className="relative bg-background pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <section className="relative bg-background pt-32 lg:pt-40" style={{ paddingBottom: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -296,7 +296,7 @@ function PageHeader() {
 
 function HowItWorksSection() {
   return (
-    <section className="py-20 lg:py-28" style={{ backgroundColor: 'var(--color-teal-dark)' }}>
+    <section style={{ backgroundColor: 'var(--color-teal-dark)', paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <p
           className="text-xs font-semibold uppercase mb-4"
@@ -339,13 +339,13 @@ function HowItWorksSection() {
 
 function SuitabilitySection() {
   return (
-    <section className="relative">
+    <section className="relative" style={{ minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: Suitable for — white background */}
-        <div className="bg-background py-16 lg:py-24">
+        <div className="bg-background" style={{ paddingBlock: 'var(--section-padding)' }}>
           <div className="mx-auto max-w-lg px-6 lg:px-0 lg:ml-auto lg:mr-0 lg:pr-12 xl:pr-20">
             <p
               className="text-xs font-semibold uppercase text-accent mb-4"
@@ -384,7 +384,7 @@ function SuitabilitySection() {
         </div>
 
         {/* Right: Not suitable for — subtle background */}
-        <div className="py-16 lg:py-24" style={{ backgroundColor: 'var(--color-subtle)' }}>
+        <div style={{ backgroundColor: 'var(--color-subtle)', paddingBlock: 'var(--section-padding)' }}>
           <div className="mx-auto max-w-lg px-6 lg:px-0 lg:mr-auto lg:ml-0 lg:pl-12 xl:pl-20">
             <p
               className="text-xs font-semibold uppercase mb-4"
@@ -451,7 +451,7 @@ function SuitabilitySection() {
 
 function ConditionsSection() {
   return (
-    <section className="relative bg-background py-20 lg:py-28">
+    <section className="relative bg-background" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       {/* Scoped styles: fixed-height cards with icon circle and lift-on-hover */}
@@ -521,7 +521,7 @@ function ConditionsSection() {
 
 function FAQSection({ faqs }: { faqs: FAQItem[] }) {
   return (
-    <section className="relative bg-subtle py-16 lg:py-24">
+    <section className="relative bg-subtle" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">

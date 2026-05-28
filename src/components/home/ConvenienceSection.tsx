@@ -178,7 +178,7 @@ function PhoneMockup() {
 
 export default function ConvenienceSection() {
   return (
-    <section className="relative bg-subtle py-24 lg:py-32">
+    <section className="relative bg-subtle snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden

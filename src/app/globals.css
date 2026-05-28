@@ -47,6 +47,24 @@ body {
   this covers the global scroll-behavior, tile hover transforms,
   image scale effects and any other animated elements.
 */
+/*
+  Full-viewport scroll snap — desktop homepage only.
+  :has(.homepage-snap) scopes snap-type to the homepage without touching
+  other pages. Sections inside .homepage-snap receive snap-align, 100svh
+  height and overflow:hidden. Mobile (< 1024px) is unaffected.
+*/
+@media (min-width: 1024px) {
+  html:has(.homepage-snap) {
+    scroll-snap-type: y mandatory;
+  }
+
+  .homepage-snap .snap-section {
+    scroll-snap-align: start;
+    height: 100svh;
+    overflow: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

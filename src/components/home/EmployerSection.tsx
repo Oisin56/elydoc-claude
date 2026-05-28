@@ -18,7 +18,7 @@ const EMPLOYER_TILES = [
 
 export default function EmployerSection() {
   return (
-    <section id="employers" className="relative bg-subtle py-32 lg:py-40">
+    <section id="employers" className="relative bg-subtle snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden

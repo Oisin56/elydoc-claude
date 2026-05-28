@@ -33,7 +33,7 @@ const WHY_TILES = [
 
 export default function WhyElyDocSection() {
   return (
-    <section id="why-elydoc" style={{ backgroundColor: 'var(--color-teal-dark)' }}>
+    <section id="why-elydoc" className="snap-section" style={{ backgroundColor: 'var(--color-teal-dark)', minHeight: 'var(--section-min-height)' }}>
       {/* Scoped hover styles */}
       <style>{`
         .why-tile {
@@ -68,7 +68,7 @@ export default function WhyElyDocSection() {
           style={{ gridArea: '1 / 1', backgroundColor: 'var(--color-teal-dark)', opacity: 0.85 }}
           aria-hidden
         />
-        <div className="py-24 lg:py-32 relative z-10" style={{ gridArea: '1 / 1' }}>
+        <div className="relative z-10" style={{ gridArea: '1 / 1', paddingBlock: 'var(--section-padding)' }}>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
             <div className="mb-16">

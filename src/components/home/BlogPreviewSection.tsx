@@ -6,7 +6,7 @@ import { formatDate } from '@/lib/blog'
 
 export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
   return (
-    <section className="relative py-24 lg:py-32">
+    <section className="relative snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden
@@ -19,7 +19,7 @@ export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
 
       {/* Section header */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 lg:mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 lg:mb-8">
           <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight">
             GP <em className="italic" style={{ color: 'var(--color-accent)' }}>Insights</em>
           </h2>
@@ -37,7 +37,14 @@ export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
         - Mobile: horizontal flex scroll, 320px fixed cards, snap, hidden scrollbar
         - Desktop: standard 3-col grid inside max-w-7xl
       */}
-      <style>{`.blog-scroll::-webkit-scrollbar { display: none; }`}</style>
+      <style>{`
+        .blog-scroll::-webkit-scrollbar { display: none; }
+        /* Desktop snap: reduce image height and card padding to fit inside 100svh */
+        @media (min-width: 1024px) {
+          .blog-card-image { height: 160px !important; }
+          .blog-card-body  { padding: 20px 24px !important; }
+        }
+      `}</style>
       <div
         className="relative z-10 blog-scroll flex gap-5 overflow-x-auto pl-6 lg:grid lg:grid-cols-3 lg:overflow-x-visible lg:gap-6 lg:mx-auto lg:max-w-7xl lg:px-8"
         style={{
@@ -58,7 +65,7 @@ export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
             }}
           >
             {post.imageUrl && (
-              <div className="overflow-hidden" style={{ height: '200px', flexShrink: 0 }}>
+              <div className="blog-card-image overflow-hidden" style={{ height: '200px', flexShrink: 0 }}>
                 <Image
                   src={post.imageUrl}
                   alt={post.title}
@@ -70,7 +77,7 @@ export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
               </div>
             )}
 
-            <div className="p-7 lg:p-8 flex flex-col flex-1 space-y-5">
+            <div className="blog-card-body p-7 lg:p-8 flex flex-col flex-1 space-y-5">
               <div className="space-y-1 flex-1">
                 {post.category && (
                   <p

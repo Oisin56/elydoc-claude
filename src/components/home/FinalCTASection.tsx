@@ -4,7 +4,7 @@ import { images } from '@/config/images'
 
 export default function FinalCTASection() {
   return (
-    <section id="book-consultation" style={{ backgroundColor: 'var(--color-teal-dark)' }}>
+    <section id="book-consultation" className="snap-section" style={{ backgroundColor: 'var(--color-teal-dark)' }}>
       {/* Stacked grid: image and content share same cell — no cropping */}
       <div className="grid">
         <Image

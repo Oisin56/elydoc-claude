@@ -97,13 +97,20 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      <HeroSection />
-      <ConvenienceSection />
-      <ServicesSection />
-      <WhyElyDocSection />
-      <EmployerSection />
-      <BlogPreviewSection posts={posts} />
-      <FinalCTASection />
+      {/*
+        homepage-snap: presence of this class activates scroll-snap-type: y mandatory
+        on <html> at desktop via the html:has(.homepage-snap) rule in globals.css.
+        Sections inside receive snap-align + 100svh height only on desktop.
+      */}
+      <div className="homepage-snap">
+        <HeroSection />
+        <ConvenienceSection />
+        <ServicesSection />
+        <WhyElyDocSection />
+        <EmployerSection />
+        <BlogPreviewSection posts={posts} />
+        <FinalCTASection />
+      </div>
     </>
   )
 }

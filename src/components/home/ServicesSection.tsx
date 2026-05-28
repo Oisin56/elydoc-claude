@@ -3,7 +3,7 @@ import { SERVICES } from '@/config/services'
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative bg-background py-16 lg:py-24">
+    <section id="services" className="relative bg-background snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden
@@ -28,13 +28,15 @@ export default function ServicesSection() {
       `}</style>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-12">
+        {/* mb reduced on desktop to keep 6-card grid inside 100svh */}
+        <div className="mb-8 lg:mb-6">
           <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight">
             Our <em className="italic" style={{ color: 'var(--color-accent)' }}>Services</em>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        {/* gap reduced on desktop to keep 2-row grid inside 100svh */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-3">
           {SERVICES.map((service) => (
             <Tile
               key={service.name}
@@ -44,7 +46,7 @@ export default function ServicesSection() {
               href={service.href}
               price={service.price}
               note={service.note ?? undefined}
-              className="service-card bg-background rounded p-8 lg:p-10 flex flex-col gap-5"
+              className="service-card bg-background rounded p-8 lg:p-6 flex flex-col gap-5"
             />
           ))}
         </div>

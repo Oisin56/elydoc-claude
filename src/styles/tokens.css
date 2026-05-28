@@ -9,6 +9,11 @@
   --color-footer:       #1A1A18;
   --color-footer-text:  #F8F6F2;
 
+  /* ─── Spacing ─────────────────────────────────────────────────────────── */
+  --section-padding:     96px;  /* standard section vertical padding        */
+  --section-padding-sm:  64px; /* compact sections (simple CTAs, etc.)     */
+  --section-min-height: 480px; /* prevents sections feeling thin or stripey */
+
   /* ─── Typography ──────────────────────────────────────────────────────── */
   /* These are overridden at the html element level by next/font variables.  */
   /* Kept here as documentation and fallback.                                */

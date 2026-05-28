@@ -4,7 +4,12 @@ import { images } from '@/config/images'
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{ height: '100dvh' }}>
+    /*
+      h-[100dvh]: mobile full-viewport height.
+      snap-section: on desktop, globals.css overrides to height:100svh + scroll-snap-align:start
+      (only when inside .homepage-snap — see html:has(.homepage-snap) rule).
+    */
+    <section className="relative overflow-hidden h-[100dvh] snap-section">
 
       <Image
         src={images.hero.src}
