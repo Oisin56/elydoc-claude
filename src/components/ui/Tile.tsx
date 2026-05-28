@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 
 interface TileProps {
   title: string
-  description: string
+  description?: string
   /** Optional Lucide icon rendered above the title */
   icon?: LucideIcon
   /** Applies a 2px teal left border — used by Why and Employer tiles */
@@ -48,12 +48,14 @@ export default function Tile({
 
       <div className={hasPriceSection ? 'space-y-2 flex-1' : 'space-y-2'}>
         <h3 className={titleClassName}>{title}</h3>
-        <p
-          className="text-sm leading-relaxed"
-          style={{ opacity: 0.62, ...descriptionStyle }}
-        >
-          {description}
-        </p>
+        {description && (
+          <p
+            className="text-sm leading-relaxed"
+            style={{ opacity: 0.62, ...descriptionStyle }}
+          >
+            {description}
+          </p>
+        )}
       </div>
 
       {hasPriceSection && (
