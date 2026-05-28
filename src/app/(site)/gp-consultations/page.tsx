@@ -1,9 +1,20 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  Droplets, Pill, Brain, Activity, Heart, Shield,
+  Wind, Flower2, Bone, Plane,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
-import Tile from '@/components/ui/Tile'
 import FAQAccordion, { type FAQItem } from '@/components/ui/FAQAccordion'
 import FinalCTASection from '@/components/home/FinalCTASection'
+
+// ─── Diagonal texture — shared across all white / subtle sections ──────────────
+const DIAGONAL_TEXTURE = {
+  zIndex: 0,
+  backgroundImage:
+    'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.03) 4px, rgba(0,0,0,0.03) 5px)',
+} as const
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -49,8 +60,7 @@ const medicalWebPageSchema = {
   '@type': 'MedicalWebPage',
   name: 'Online GP Consultations Ireland — ElyDoc',
   url: 'https://elydoc.ie/gp-consultations',
-  description:
-    'Doctor-led online GP consultations for suitable conditions in Ireland.',
+  description: 'Doctor-led online GP consultations for suitable conditions in Ireland.',
   medicalAudience: {
     '@type': 'MedicalAudience',
     audienceType: 'Patient',
@@ -66,17 +76,17 @@ const medicalWebPageSchema = {
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const CONDITIONS = [
-  'Skin conditions',
-  'Medication queries and reviews',
-  'Mental health support',
-  'Digestive issues',
-  "Women's health",
-  "Men's health",
-  'Respiratory conditions',
-  'Allergies and hay fever',
-  'Musculoskeletal issues',
-  'Travel health advice',
+const CONDITIONS: Array<{ label: string; icon: LucideIcon }> = [
+  { label: 'Skin conditions',               icon: Droplets },
+  { label: 'Medication queries and reviews', icon: Pill     },
+  { label: 'Mental health support',          icon: Brain    },
+  { label: 'Digestive issues',               icon: Activity },
+  { label: "Women's health",                 icon: Heart    },
+  { label: "Men's health",                   icon: Shield   },
+  { label: 'Respiratory conditions',         icon: Wind     },
+  { label: 'Allergies and hay fever',        icon: Flower2  },
+  { label: 'Musculoskeletal issues',         icon: Bone     },
+  { label: 'Travel health advice',           icon: Plane    },
 ]
 
 const STEPS = [
@@ -194,10 +204,9 @@ export default async function GPConsultationsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalWebPageSchema) }}
       />
       <PageHeader />
-      <ConditionsSection />
       <HowItWorksSection />
       <SuitabilitySection />
-      <PrescribingNote />
+      <ConditionsSection />
       <FAQSection faqs={faqs} />
       <FinalCTASection />
     </>
@@ -206,91 +215,84 @@ export default async function GPConsultationsPage() {
 
 // ─── Section 1: Page header ───────────────────────────────────────────────────
 
+function PriceBadge() {
+  return (
+    <div
+      className="flex flex-col items-center justify-center rounded-full select-none shrink-0"
+      style={{
+        width: '144px',
+        height: '144px',
+        backgroundColor: 'var(--color-subtle)',
+        boxShadow: '0 6px 24px -4px color-mix(in oklch, var(--color-text) 16%, transparent)',
+      }}
+    >
+      <span
+        className="font-headline text-4xl font-[300] leading-none"
+        style={{ color: 'var(--color-accent)' }}
+      >
+        €55
+      </span>
+      <span
+        className="text-xs text-center leading-tight mt-2"
+        style={{ color: 'var(--color-accent)', opacity: 0.7, maxWidth: '72px' }}
+      >
+        per consultation
+      </span>
+    </div>
+  )
+}
+
 function PageHeader() {
   return (
-    <section className="bg-background pt-32 pb-20 lg:pt-40 lg:pb-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p
-          className="text-xs font-semibold uppercase text-accent mb-6"
-          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
-        >
-          Our Services
-        </p>
+    <section className="relative bg-background pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
-        <h1 className="font-headline text-5xl lg:text-6xl xl:text-7xl font-[300] tracking-tight leading-[1.04] max-w-3xl">
-          Online GP consultations for suitable conditions.
-        </h1>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="lg:flex lg:items-start lg:gap-16 xl:gap-24">
 
-        <p
-          className="mt-7 text-lg lg:text-xl leading-relaxed max-w-[56ch]"
-          style={{ opacity: 0.7 }}
-        >
-          Speak with a vocationally trained GP by video or phone — registered on the
-          Specialist Division for General Practice with the Irish Medical Council.
-        </p>
+          {/* Left: headline content */}
+          <div className="flex-1 min-w-0">
+            <p
+              className="text-xs font-semibold uppercase text-accent mb-6"
+              style={{ letterSpacing: '0.1em', opacity: 0.85 }}
+            >
+              Our Services
+            </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-6">
-          <Link
-            href={process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'}
-            className="inline-block px-8 py-4 bg-accent text-background text-sm font-medium rounded transition-colors hover:bg-accent-dark"
-          >
-            Book a Consultation
-          </Link>
-          <p className="text-base font-medium" style={{ color: 'var(--color-accent)' }}>
-            €55 per consultation
-          </p>
+            <h1 className="font-headline text-5xl lg:text-6xl xl:text-7xl font-[300] tracking-tight leading-[1.04] max-w-3xl">
+              Online GP consultations for suitable conditions.
+            </h1>
+
+            <p
+              className="mt-7 text-lg lg:text-xl leading-relaxed max-w-[56ch]"
+              style={{ opacity: 0.7 }}
+            >
+              Speak with a vocationally trained GP by video or phone — registered on the
+              Specialist Division for General Practice with the Irish Medical Council.
+            </p>
+
+            <div className="mt-10">
+              <Link
+                href={process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'}
+                className="inline-block px-8 py-4 bg-accent text-background text-sm font-medium rounded transition-colors hover:bg-accent-dark"
+              >
+                Book a Consultation
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: price badge — floats beside headline on desktop, sits below button on mobile */}
+          <div className="mt-10 lg:mt-24 flex justify-start lg:justify-center">
+            <PriceBadge />
+          </div>
+
         </div>
       </div>
     </section>
   )
 }
 
-// ─── Section 2: What we can help with ────────────────────────────────────────
-
-function ConditionsSection() {
-  return (
-    <section className="bg-subtle py-20 lg:py-28">
-      {/* Scoped hover styles for condition tiles */}
-      <style>{`
-        .condition-tile {
-          background-color: var(--color-background);
-          border: 0.5px solid color-mix(in oklch, var(--color-text) 10%, transparent);
-          border-radius: 8px;
-          padding: 18px 20px;
-          transition: background-color 150ms ease;
-        }
-        .condition-tile:hover {
-          background-color: color-mix(in oklch, var(--color-accent) 6%, var(--color-background));
-        }
-      `}</style>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p
-          className="text-xs font-semibold uppercase text-accent mb-4"
-          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
-        >
-          Suitable conditions
-        </p>
-        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-12">
-          What we can help with
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
-          {CONDITIONS.map((condition) => (
-            <Tile
-              key={condition}
-              title={condition}
-              showLeftBorder
-              className="condition-tile"
-              titleClassName="text-sm font-medium leading-snug"
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─── Section 3: How it works ──────────────────────────────────────────────────
+// ─── Section 2: How it works ──────────────────────────────────────────────────
 
 function HowItWorksSection() {
   return (
@@ -312,7 +314,6 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {STEPS.map((step) => (
             <div key={step.n}>
-              {/* Large step number as typographic anchor */}
               <div
                 className="font-headline text-7xl lg:text-8xl font-light leading-none select-none mb-5"
                 style={{ color: 'var(--color-background)', opacity: 0.13 }}
@@ -334,12 +335,14 @@ function HowItWorksSection() {
   )
 }
 
-// ─── Section 4: Is this right for me ─────────────────────────────────────────
+// ─── Section 3: Is this right for me ─────────────────────────────────────────
 
 function SuitabilitySection() {
   return (
-    <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <section className="relative">
+      <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
+
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: Suitable for — white background */}
         <div className="bg-background py-16 lg:py-24">
@@ -356,7 +359,6 @@ function SuitabilitySection() {
             <ul className="space-y-4">
               {SUITABLE_FOR.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  {/* Filled circle check — matches hero bullet treatment */}
                   <svg
                     width="18"
                     height="18"
@@ -396,7 +398,6 @@ function SuitabilitySection() {
             <ul className="space-y-4">
               {NOT_SUITABLE_FOR.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  {/* Muted dash circle */}
                   <svg
                     width="18"
                     height="18"
@@ -428,7 +429,6 @@ function SuitabilitySection() {
               ))}
             </ul>
 
-            {/* Note for 12–18 year olds */}
             <p
               className="mt-8 text-xs leading-relaxed pt-6"
               style={{
@@ -447,33 +447,84 @@ function SuitabilitySection() {
   )
 }
 
-// ─── Section 5: Prescribing note ─────────────────────────────────────────────
+// ─── Section 4: Conditions we can help with ───────────────────────────────────
 
-function PrescribingNote() {
+function ConditionsSection() {
   return (
-    <section className="bg-background py-14 lg:py-20">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+    <section className="relative bg-background py-20 lg:py-28">
+      <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
+
+      {/* Scoped styles: fixed-height cards with icon circle and lift-on-hover */}
+      <style>{`
+        .condition-card {
+          height: 120px;
+          background-color: var(--color-background);
+          border: 0.5px solid color-mix(in oklch, var(--color-text) 10%, transparent);
+          border-left: 2px solid var(--color-accent);
+          border-radius: 8px;
+          padding: 18px 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+        .condition-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px -4px color-mix(in oklch, var(--color-text) 12%, transparent);
+        }
+        .condition-icon-circle {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: var(--color-accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .condition-card-title {
+          font-family: var(--font-headline);
+          font-size: 13px;
+          font-weight: 300;
+          line-height: 1.35;
+          color: var(--color-text);
+        }
+      `}</style>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <p
-          className="text-sm leading-[1.8]"
-          style={{ opacity: 0.52 }}
+          className="text-xs font-semibold uppercase text-accent mb-4"
+          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
         >
-          ElyDoc can provide bridging prescriptions for established medications and short-term
-          treatments for suitable conditions. We do not generally initiate new long-term
-          medications — patients requiring ongoing complex medication management are best served
-          by their own GP who can provide continuity of care. ElyDoc does not prescribe opioids,
-          benzodiazepines, sleeping tablets or controlled drugs.
+          Conditions we can help with
         </p>
+        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-12">
+          What we can help with
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
+          {CONDITIONS.map(({ label, icon: Icon }) => (
+            <div key={label} className="condition-card">
+              <div className="condition-icon-circle">
+                <Icon size={16} strokeWidth={1.5} color="var(--color-background)" aria-hidden />
+              </div>
+              <p className="condition-card-title">{label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
 }
 
-// ─── Section 6: FAQ ───────────────────────────────────────────────────────────
+// ─── Section 5: FAQ ───────────────────────────────────────────────────────────
 
 function FAQSection({ faqs }: { faqs: FAQItem[] }) {
   return (
-    <section className="bg-subtle py-16 lg:py-24">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+    <section className="relative bg-subtle py-16 lg:py-24">
+      <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
+
+      <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">
         <p
           className="text-xs font-semibold uppercase text-accent mb-4"
           style={{ letterSpacing: '0.1em', opacity: 0.85 }}
