@@ -1,12 +1,5 @@
 import Link from 'next/link'
-
-const services = [
-  { label: 'GP Consultations', href: '/gp-consultations' },
-  { label: 'Weight Management', href: '/weight-management' },
-  { label: 'Hair Loss', href: '/hair-loss' },
-  { label: 'Sick Certification', href: '/sick-certification' },
-  { label: 'Referrals & Prescriptions', href: '/referrals-prescriptions' },
-]
+import { NAV_SERVICES } from '@/config/services'
 
 const company = [
   { label: 'About', href: '/about' },
@@ -47,14 +40,14 @@ export default function Footer() {
               Services
             </h3>
             <ul className="space-y-3">
-              {services.map((s) => (
+              {NAV_SERVICES.map((s) => (
                 <li key={s.href}>
                   <Link
                     href={s.href}
                     className="text-sm transition-opacity hover:opacity-100"
                     style={{ opacity: 0.65 }}
                   >
-                    {s.label}
+                    {s.name}
                   </Link>
                 </li>
               ))}

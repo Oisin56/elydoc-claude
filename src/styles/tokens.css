@@ -1,10 +1,11 @@
 :root {
   /* ─── Colours ─────────────────────────────────────────────────────────── */
-  --color-background:   #F8F6F2;
+  --color-background:   #FFFFFF;
   --color-text:         #1A1A18;
-  --color-accent:       #2A6B6B;
-  --color-accent-dark:  #1F5252;
-  --color-subtle:       #EFEDE8;
+  --color-accent:       #1B6B6B;
+  --color-accent-dark:  #154F4F;
+  --color-teal-dark:    #0D4A4A;
+  --color-subtle:       #F2F2F0;
   --color-footer:       #1A1A18;
   --color-footer-text:  #F8F6F2;
 

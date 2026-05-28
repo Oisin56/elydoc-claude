@@ -1,23 +1,22 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { NAV_SERVICES } from '@/config/services'
 
-const services = [
-  { label: 'GP Consultations', href: '/gp-consultations' },
-  { label: 'Weight Management', href: '/weight-management' },
-  { label: 'Hair Loss', href: '/hair-loss' },
-  { label: 'Sick Certification', href: '/sick-certification' },
-  { label: 'Referrals & Prescriptions', href: '/referrals-prescriptions' },
-]
+const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'
 
-// Booking URL will be sourced from Sanity SiteSettings once wired up
-const BOOKING_URL = '#book-consultation'
+function smoothScrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -36,8 +35,33 @@ export default function Nav() {
     }
   }, [])
 
+  function handleServicesClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHome) {
+      e.preventDefault()
+      smoothScrollTo('services')
+    }
+    setMobileOpen(false)
+    setServicesOpen(false)
+  }
+
+  function handleAboutClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHome) {
+      e.preventDefault()
+      smoothScrollTo('why-elydoc')
+    }
+    setMobileOpen(false)
+  }
+
+  function handleEmployersClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHome) {
+      e.preventDefault()
+      smoothScrollTo('employers')
+    }
+    setMobileOpen(false)
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-subtle">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-subtle">
       <nav
         aria-label="Main navigation"
         className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16 lg:h-20"
@@ -52,29 +76,30 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-8">
-          {/* Services dropdown */}
+          {/* Services — smart link + dropdown */}
           <div
             ref={dropdownRef}
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button
-              onClick={() => setServicesOpen((o) => !o)}
-              aria-expanded={servicesOpen}
+            <Link
+              href={isHome ? '#services' : '/services'}
+              onClick={handleServicesClick}
               aria-haspopup="true"
+              aria-expanded={servicesOpen}
               className="flex items-center gap-1.5 text-sm text-text hover:text-accent transition-colors"
             >
               Services
               <ChevronDown open={servicesOpen} />
-            </button>
+            </Link>
 
             {servicesOpen && (
               <div
                 role="menu"
                 className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-background border border-subtle rounded py-1.5 shadow-sm"
               >
-                {services.map((s) => (
+                {NAV_SERVICES.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
@@ -82,19 +107,32 @@ export default function Nav() {
                     onClick={() => setServicesOpen(false)}
                     className="block px-4 py-2 text-sm text-text hover:text-accent hover:bg-subtle transition-colors"
                   >
-                    {s.label}
+                    {s.name}
                   </Link>
                 ))}
               </div>
             )}
           </div>
 
-          <Link href="/about" className="text-sm text-text hover:text-accent transition-colors">
+          {/* About — smart link */}
+          <Link
+            href={isHome ? '#why-elydoc' : '/about'}
+            onClick={handleAboutClick}
+            className="text-sm text-text hover:text-accent transition-colors"
+          >
             About
           </Link>
 
+          <Link
+            href={isHome ? '#employers' : '/employers'}
+            onClick={handleEmployersClick}
+            className="text-sm text-text hover:text-accent transition-colors"
+          >
+            Employers
+          </Link>
+
           <Link href="/blog" className="text-sm text-text hover:text-accent transition-colors">
-            Blog
+            Insights
           </Link>
 
           <Link
@@ -142,14 +180,14 @@ export default function Nav() {
               Services
             </p>
             <ul className="space-y-4">
-              {services.map((s) => (
+              {NAV_SERVICES.map((s) => (
                 <li key={s.href}>
                   <Link
                     href={s.href}
                     onClick={() => setMobileOpen(false)}
                     className="text-sm text-text hover:text-accent transition-colors"
                   >
-                    {s.label}
+                    {s.name}
                   </Link>
                 </li>
               ))}
@@ -159,11 +197,20 @@ export default function Nav() {
           <ul className="space-y-4">
             <li>
               <Link
-                href="/about"
-                onClick={() => setMobileOpen(false)}
+                href={isHome ? '#why-elydoc' : '/about'}
+                onClick={handleAboutClick}
                 className="text-sm text-text hover:text-accent transition-colors"
               >
                 About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={isHome ? '#employers' : '/employers'}
+                onClick={handleEmployersClick}
+                className="text-sm text-text hover:text-accent transition-colors"
+              >
+                Employers
               </Link>
             </li>
             <li>
@@ -172,7 +219,7 @@ export default function Nav() {
                 onClick={() => setMobileOpen(false)}
                 className="text-sm text-text hover:text-accent transition-colors"
               >
-                Blog
+                Insights
               </Link>
             </li>
           </ul>

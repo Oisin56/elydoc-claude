@@ -14,6 +14,7 @@
   --color-text:         var(--color-text);
   --color-accent:       var(--color-accent);
   --color-accent-dark:  var(--color-accent-dark);
+  --color-teal-dark:    var(--color-teal-dark);
   --color-subtle:       var(--color-subtle);
   --color-footer:       var(--color-footer);
   --color-footer-text:  var(--color-footer-text);
@@ -30,6 +31,7 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {

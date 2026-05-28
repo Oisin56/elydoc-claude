@@ -19,15 +19,6 @@ export const sanityClient = createClient({
   useCdn: true,
 })
 
-// Authenticated client for draft previews — server-side only, never sent to browser
-export const sanityServerClient = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false,
-  token: process.env.SANITY_API_READ_TOKEN,
-})
-
 // Image URL builder — used with @sanity/image-url for Sanity-hosted images
 const builder = imageUrlBuilder(sanityClient)
 
