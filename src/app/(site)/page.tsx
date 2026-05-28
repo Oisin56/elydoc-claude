@@ -107,8 +107,8 @@ export default async function HomePage() {
         <ConvenienceSection />
         <ServicesSection />
         <WhyElyDocSection />
-        <EmployerSection />
         <BlogPreviewSection posts={posts} />
+        <EmployerSection />
         <FinalCTASection />
       </div>
     </>

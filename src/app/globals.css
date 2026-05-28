@@ -54,14 +54,23 @@ body {
   height and overflow:hidden. Mobile (< 1024px) is unaffected.
 */
 @media (min-width: 1024px) {
-  html:has(.homepage-snap) {
+  html:has(.homepage-snap),
+  html:has(.gp-snap) {
     scroll-snap-type: y mandatory;
   }
 
-  .homepage-snap .snap-section {
+  .homepage-snap .snap-section,
+  .gp-snap .snap-section {
     scroll-snap-align: start;
     height: 100svh;
     overflow: hidden;
+  }
+
+  /* Footer is outside the snap wrapper (site layout) — needs its own rule on both pages.
+     No height constraint — footer snaps into view at whatever its natural height is. */
+  html:has(.homepage-snap) footer,
+  html:has(.gp-snap) footer {
+    scroll-snap-align: start;
   }
 }
 

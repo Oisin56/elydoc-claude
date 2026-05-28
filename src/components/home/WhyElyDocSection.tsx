@@ -68,7 +68,7 @@ export default function WhyElyDocSection() {
           style={{ gridArea: '1 / 1', backgroundColor: 'var(--color-teal-dark)', opacity: 0.85 }}
           aria-hidden
         />
-        <div className="relative z-10" style={{ gridArea: '1 / 1', paddingBlock: 'var(--section-padding)' }}>
+        <div className="relative z-10 lg:min-h-[100svh] lg:flex lg:flex-col lg:justify-center" style={{ gridArea: '1 / 1', paddingBlock: 'var(--section-padding)' }}>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
             <div className="mb-16">

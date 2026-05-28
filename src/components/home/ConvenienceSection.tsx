@@ -178,7 +178,7 @@ function PhoneMockup() {
 
 export default function ConvenienceSection() {
   return (
-    <section className="relative bg-subtle snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
+    <section className="relative bg-subtle snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden

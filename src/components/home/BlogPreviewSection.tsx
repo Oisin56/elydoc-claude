@@ -6,7 +6,7 @@ import { formatDate } from '@/lib/blog'
 
 export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
   return (
-    <section className="relative snap-section" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
+    <section className="relative snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       {/* Diagonal line pattern overlay */}
       <div
         aria-hidden
@@ -18,8 +18,8 @@ export default function BlogPreviewSection({ posts }: { posts: Post[] }) {
       />
 
       {/* Section header */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 lg:mb-8">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="flex flex-row items-end justify-between gap-4 mb-12 lg:mb-8">
           <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight">
             GP <em className="italic" style={{ color: 'var(--color-accent)' }}>Insights</em>
           </h2>
