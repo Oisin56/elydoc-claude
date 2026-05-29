@@ -1,5 +1,17 @@
 import type { NextConfig } from 'next'
 
+const isDev = process.env.NODE_ENV === 'development'
+
+// React requires eval() in development mode for debugging features (e.g.
+// reconstructing callstacks). It is never used in production builds, so we only
+// relax script-src for dev.
+const scriptSrc = [
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  isDev ? "'unsafe-eval'" : '',
+]
+  .filter(Boolean)
+  .join(' ')
+
 // ─── Security headers ─────────────────────────────────────────────────────────
 // Applied to all routes including /studio. If Sanity Studio breaks in production
 // due to CSP, scope these headers to '/((?!studio).*)' to exclude that path.
@@ -34,11 +46,13 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+      scriptSrc,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self'",
-      "connect-src 'self' https://cdn.sanity.io https://elydoc.sanity.io",
+      // *.sanity.io covers the API/CDN hosts used by the client-side fetch
+      // (e.g. <projectId>.apicdn.sanity.io) as well as Studio.
+      "connect-src 'self' https://*.sanity.io wss://*.sanity.io",
     ].join('; '),
   },
 ]

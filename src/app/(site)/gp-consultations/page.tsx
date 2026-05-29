@@ -5,8 +5,7 @@ import {
   Wind, Flower2, Bone, Plane,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { sanityClient } from '@/lib/sanity'
-import FAQAccordion, { type FAQItem } from '@/components/ui/FAQAccordion'
+import FAQTabs from '@/components/ui/FAQTabs'
 import FinalCTASection from '@/components/home/FinalCTASection'
 
 // ─── Diagonal texture — shared across all white / subtle sections ──────────────
@@ -128,75 +127,9 @@ const NOT_SUITABLE_FOR = [
   'ADHD assessment or management',
 ]
 
-// [DOCTOR REVIEW] Placeholder FAQ answers — review before publishing to production.
-const PLACEHOLDER_FAQS: FAQItem[] = [
-  {
-    _id: 'placeholder-1',
-    question: 'What conditions can an online GP treat?',
-    answer:
-      "ElyDoc GPs can help with a wide range of non-emergency primary care concerns — skin conditions, medication queries, mild-to-moderate mental health concerns, digestive issues, women's and men's health, respiratory conditions, allergies and musculoskeletal issues. If your condition requires physical examination, urgent care or investigation, your doctor will advise you and signpost you to appropriate services.",
-  },
-  {
-    _id: 'placeholder-2',
-    question: 'How do I prepare for my consultation?',
-    answer:
-      "Have your current medication list ready if relevant. Think about your symptoms — when they started, what makes them better or worse and what you'd like help with. A good internet connection and a quiet, private space make for the best consultation. No special equipment is needed.",
-  },
-  {
-    _id: 'placeholder-3',
-    question: 'What happens if I need in-person care?',
-    answer:
-      'Our doctors have clear clinical boundaries. If your condition requires physical examination, urgent assessment or in-person care, your doctor will tell you clearly and advise where to attend. ElyDoc is not an emergency service — if you are experiencing a medical emergency, please call 999 or attend your nearest Emergency Department immediately.',
-  },
-]
-
-// ─── Sanity data fetch ────────────────────────────────────────────────────────
-
-type RawFAQItem = {
-  _id: string
-  question: string
-  answer: Array<{
-    _type: string
-    children?: Array<{ text: string }>
-  }>
-}
-
-function portableTextToString(blocks: RawFAQItem['answer']): string {
-  if (!blocks) return ''
-  return blocks
-    .filter((b) => b._type === 'block')
-    .map((b) => b.children?.map((c) => c.text).join('') ?? '')
-    .filter(Boolean)
-    .join(' ')
-}
-
-const FAQ_QUERY = `
-  *[_type == "faqItem" && serviceCategory == "gp-consultations"] | order(displayOrder asc) {
-    _id,
-    question,
-    answer
-  }
-`
-
-async function getFAQs(): Promise<FAQItem[]> {
-  try {
-    const raw = await sanityClient.fetch<RawFAQItem[]>(FAQ_QUERY)
-    if (!raw?.length) return PLACEHOLDER_FAQS
-    return raw.map((item) => ({
-      _id: item._id,
-      question: item.question,
-      answer: portableTextToString(item.answer),
-    }))
-  } catch {
-    return PLACEHOLDER_FAQS
-  }
-}
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default async function GPConsultationsPage() {
-  const faqs = await getFAQs()
-
+export default function GPConsultationsPage() {
   return (
     <>
       <script
@@ -212,7 +145,7 @@ export default async function GPConsultationsPage() {
         <HowItWorksSection />
         <SuitabilitySection />
         <ConditionsSection />
-        <FAQSection faqs={faqs} />
+        <FAQSection />
         <FinalCTASection />
       </div>
     </>
@@ -525,22 +458,13 @@ function ConditionsSection() {
 
 // ─── Section 5: FAQ ───────────────────────────────────────────────────────────
 
-function FAQSection({ faqs }: { faqs: FAQItem[] }) {
+function FAQSection() {
   return (
     <section className="relative bg-subtle snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 w-full mx-auto max-w-3xl px-6 lg:px-8">
-        <p
-          className="text-xs font-semibold uppercase text-accent mb-4"
-          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
-        >
-          FAQ
-        </p>
-        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-12">
-          Common questions
-        </h2>
-        <FAQAccordion items={faqs} />
+        <FAQTabs serviceCategory="gp-consultations" />
       </div>
     </section>
   )
