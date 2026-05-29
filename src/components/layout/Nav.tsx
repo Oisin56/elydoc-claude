@@ -95,21 +95,25 @@ export default function Nav() {
             </Link>
 
             {servicesOpen && (
-              <div
-                role="menu"
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-background border border-subtle rounded py-1.5 shadow-sm"
-              >
-                {NAV_SERVICES.map((s) => (
-                  <Link
-                    key={s.href}
-                    href={s.href}
-                    role="menuitem"
-                    onClick={() => setServicesOpen(false)}
-                    className="block px-4 py-2 text-sm text-text hover:text-accent hover:bg-subtle transition-colors"
-                  >
-                    {s.name}
-                  </Link>
-                ))}
+              // pt-2 (not mt-2) keeps the hover bridge continuous between the
+              // trigger and the menu so the pointer can reach the items.
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-2">
+                <div
+                  role="menu"
+                  className="bg-background border border-subtle rounded py-1.5 shadow-sm"
+                >
+                  {NAV_SERVICES.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      role="menuitem"
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-4 py-2 text-sm text-text hover:text-accent hover:bg-subtle transition-colors"
+                    >
+                      {s.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>

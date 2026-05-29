@@ -26,4 +26,24 @@ export const images = {
     width: 1456,
     height: 816,
   },
+  /**
+   * Patient Call — GP Consultations header phone mockup, full-bleed screen.
+   * Portrait video-call view of a patient during an online consultation.
+   */
+  patientCall: {
+    src: '/images/patient-call.webp',
+    alt: 'Patient during an online GP video consultation with ElyDoc',
+    width: 720,
+    height: 1280,
+  },
+  /**
+   * Doctor Call — GP Consultations header phone mockup, picture-in-picture.
+   * Square video-call view of an ElyDoc GP during an online consultation.
+   */
+  doctorCall: {
+    src: '/images/doctor-call.webp',
+    alt: 'ElyDoc GP during an online video consultation',
+    width: 800,
+    height: 800,
+  },
 } as const

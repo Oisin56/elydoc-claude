@@ -36,12 +36,12 @@ export default function Tile({
   descriptionStyle,
 }: TileProps) {
   const hasPriceSection = !!(price || note)
+  const rootStyle = showLeftBorder
+    ? { borderLeft: '2px solid var(--color-accent)' }
+    : undefined
 
-  return (
-    <div
-      className={className}
-      style={showLeftBorder ? { borderLeft: '2px solid var(--color-accent)' } : undefined}
-    >
+  const inner = (
+    <>
       {Icon && (
         <Icon size={20} strokeWidth={1.5} style={{ color: 'var(--color-accent)' }} aria-hidden />
       )}
@@ -74,14 +74,30 @@ export default function Tile({
       )}
 
       {href && (
-        <Link
-          href={href}
-          className="text-sm font-medium text-accent hover:text-accent-dark transition-colors self-start"
-          aria-label={`Learn more about ${title}`}
-        >
+        <span className="text-sm font-medium text-accent self-start">
           Learn more →
-        </Link>
+        </span>
       )}
+    </>
+  )
+
+  // When an href is provided the whole tile is a single clickable link.
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={className}
+        style={rootStyle}
+        aria-label={`Learn more about ${title}`}
+      >
+        {inner}
+      </Link>
+    )
+  }
+
+  return (
+    <div className={className} style={rootStyle}>
+      {inner}
     </div>
   )
 }

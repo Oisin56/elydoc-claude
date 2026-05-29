@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Droplets, Pill, Brain, Activity, Heart, Shield,
-  Wind, Flower2, Bone, Plane,
+  Wind, Flower2, Bone, Plane, Eye, TestTube, Check,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import FAQTabs from '@/components/ui/FAQTabs'
@@ -76,7 +76,7 @@ const medicalWebPageSchema = {
 // ─── Static data ──────────────────────────────────────────────────────────────
 
 const CONDITIONS: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Skin conditions',               icon: Droplets },
+  { label: 'Skin conditions',                icon: Droplets },
   { label: 'Medication queries and reviews', icon: Pill     },
   { label: 'Mental health support',          icon: Brain    },
   { label: 'Digestive issues',               icon: Activity },
@@ -86,6 +86,8 @@ const CONDITIONS: Array<{ label: string; icon: LucideIcon }> = [
   { label: 'Allergies and hay fever',        icon: Flower2  },
   { label: 'Musculoskeletal issues',         icon: Bone     },
   { label: 'Travel health advice',           icon: Plane    },
+  { label: 'Common eye and ear conditions',  icon: Eye      },
+  { label: 'Advice on blood results',        icon: TestTube },
 ]
 
 const STEPS = [
@@ -142,9 +144,9 @@ export default function GPConsultationsPage() {
       */}
       <div className="gp-snap">
         <PageHeader />
+        <ConditionsSection />
         <HowItWorksSection />
         <SuitabilitySection />
-        <ConditionsSection />
         <FAQSection />
         <FinalCTASection />
       </div>
@@ -154,29 +156,47 @@ export default function GPConsultationsPage() {
 
 // ─── Section 1: Page header ───────────────────────────────────────────────────
 
-function PriceBadge() {
+const HEADER_POINTS = [
+  'Vocationally trained GPs',
+  'Specialist Division — Irish Medical Council',
+  'Same day appointments available',
+]
+
+// Typographic statements anchored by a teal left border on the header's right side.
+const HEADER_STATEMENTS = [
+  { label: 'Consult by',    lead: 'Video',         accent: 'or phone.' },
+  { label: 'Appointments',  lead: 'On your',       accent: 'schedule.' },
+  { label: 'Consultation',  lead: 'Discreet and',  accent: 'private.' },
+]
+
+function HeaderStatements() {
   return (
     <div
-      className="flex flex-col items-center justify-center rounded-full select-none shrink-0"
-      style={{
-        width: '144px',
-        height: '144px',
-        backgroundColor: 'var(--color-subtle)',
-        boxShadow: '0 6px 24px -4px color-mix(in oklch, var(--color-text) 16%, transparent)',
-      }}
+      className="pl-7"
+      style={{ borderLeft: '2px solid color-mix(in oklch, var(--color-accent) 35%, transparent)' }}
     >
-      <span
-        className="font-headline text-4xl font-[300] leading-none"
-        style={{ color: 'var(--color-accent)' }}
-      >
-        €55
-      </span>
-      <span
-        className="text-xs text-center leading-tight mt-2"
-        style={{ color: 'var(--color-accent)', opacity: 0.7, maxWidth: '72px' }}
-      >
-        per consultation
-      </span>
+      {HEADER_STATEMENTS.map((s, i) => (
+        <div
+          key={s.label}
+          className={i > 0 ? 'pt-7 mt-7' : ''}
+          style={
+            i > 0
+              ? { borderTop: '1px solid color-mix(in oklch, var(--color-text) 10%, transparent)' }
+              : undefined
+          }
+        >
+          <p
+            className="text-xs font-semibold uppercase mb-3"
+            style={{ letterSpacing: '0.1em', color: 'var(--color-accent)', opacity: 0.85 }}
+          >
+            {s.label}
+          </p>
+          <p className="font-headline text-4xl lg:text-5xl font-[200] tracking-tight leading-[1.05]">
+            {s.lead}{' '}
+            <em className="italic" style={{ color: 'var(--color-accent)' }}>{s.accent}</em>
+          </p>
+        </div>
+      ))}
     </div>
   )
 }
@@ -187,7 +207,7 @@ function PageHeader() {
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="lg:flex lg:items-start lg:gap-16 xl:gap-24">
+        <div className="lg:flex lg:items-center lg:gap-16 xl:gap-24">
 
           {/* Left: headline content */}
           <div className="flex-1 min-w-0">
@@ -202,27 +222,41 @@ function PageHeader() {
               Online GP consultations for suitable conditions.
             </h1>
 
-            <p
-              className="mt-7 text-lg lg:text-xl leading-relaxed max-w-[56ch]"
-              style={{ opacity: 0.7 }}
-            >
-              Speak with a vocationally trained GP by video or phone — registered on the
-              Specialist Division for General Practice with the Irish Medical Council.
-            </p>
+            <ul className="mt-8 space-y-4 max-w-[44ch]">
+              {HEADER_POINTS.map((point) => (
+                <li key={point} className="flex items-center gap-3 text-base lg:text-lg text-text">
+                  <span
+                    className="flex items-center justify-center size-5 rounded-full shrink-0"
+                    style={{ backgroundColor: 'var(--color-accent)' }}
+                  >
+                    <Check size={12} color="white" strokeWidth={3} aria-hidden />
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
 
-            <div className="mt-10">
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
                 href={process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'}
                 className="inline-block px-8 py-4 bg-accent text-background text-sm font-medium rounded transition-colors hover:bg-accent-dark"
               >
                 Book a Consultation
               </Link>
+              <Link
+                href="#conditions"
+                className="text-sm font-medium transition-colors hover:text-accent"
+                style={{ color: 'var(--color-accent)' }}
+              >
+                See what we treat →
+              </Link>
             </div>
           </div>
 
-          {/* Right: price badge — floats beside headline on desktop, sits below button on mobile */}
-          <div className="mt-10 lg:mt-24 flex justify-start lg:justify-center">
-            <PriceBadge />
+          {/* Right: typographic block — vertically centred on desktop,
+              sits below text content on mobile */}
+          <div className="mt-14 lg:mt-0 lg:shrink-0">
+            <HeaderStatements />
           </div>
 
         </div>
@@ -235,8 +269,18 @@ function PageHeader() {
 
 function HowItWorksSection() {
   return (
-    <section className="snap-section lg:flex lg:flex-col lg:justify-center" style={{ backgroundColor: 'var(--color-teal-dark)', paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
-      <div className="w-full mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative snap-section lg:flex lg:flex-col lg:justify-center" style={{ backgroundColor: 'var(--color-teal-dark)', paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
+      {/* Diagonal texture — white lines so it reads on the dark teal background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 0,
+          backgroundImage:
+            'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.04) 4px, rgba(255,255,255,0.04) 5px)',
+        }}
+      />
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-8">
         <p
           className="text-xs font-semibold uppercase mb-4"
           style={{ letterSpacing: '0.1em', color: 'var(--color-background)', opacity: 0.55 }}
@@ -255,7 +299,7 @@ function HowItWorksSection() {
             <div key={step.n}>
               <div
                 className="font-headline text-7xl lg:text-8xl font-light leading-none select-none mb-5"
-                style={{ color: 'var(--color-background)', opacity: 0.13 }}
+                style={{ color: 'var(--color-footer-text)', opacity: 0.9 }}
                 aria-hidden
               >
                 {step.n}
@@ -279,13 +323,12 @@ function HowItWorksSection() {
 function SuitabilitySection() {
   return (
     <section className="relative snap-section" style={{ minHeight: 'var(--section-min-height)' }}>
-      <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
-
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 lg:h-full">
 
         {/* Left: Suitable for — white background */}
-        <div className="bg-background lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)' }}>
-          <div className="mx-auto max-w-lg px-6 lg:px-0 lg:ml-auto lg:mr-0 lg:pr-12 xl:pr-20">
+        <div className="relative bg-background lg:flex lg:flex-col lg:justify-start" style={{ paddingBlock: 'var(--section-padding)' }}>
+          <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
+          <div className="relative z-10 mx-auto max-w-lg px-6 lg:px-0 lg:ml-auto lg:mr-0 lg:pr-12 xl:pr-20">
             <p
               className="text-xs font-semibold uppercase text-accent mb-4"
               style={{ letterSpacing: '0.1em', opacity: 0.85 }}
@@ -323,8 +366,9 @@ function SuitabilitySection() {
         </div>
 
         {/* Right: Not suitable for — subtle background */}
-        <div className="lg:flex lg:flex-col lg:justify-center" style={{ backgroundColor: 'var(--color-subtle)', paddingBlock: 'var(--section-padding)' }}>
-          <div className="mx-auto max-w-lg px-6 lg:px-0 lg:mr-auto lg:ml-0 lg:pl-12 xl:pl-20">
+        <div className="relative lg:flex lg:flex-col lg:justify-start" style={{ backgroundColor: 'var(--color-subtle)', paddingBlock: 'var(--section-padding)' }}>
+          <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
+          <div className="relative z-10 mx-auto max-w-lg px-6 lg:px-0 lg:mr-auto lg:ml-0 lg:pl-12 xl:pl-20">
             <p
               className="text-xs font-semibold uppercase mb-4"
               style={{ letterSpacing: '0.1em', opacity: 0.42 }}
@@ -390,62 +434,79 @@ function SuitabilitySection() {
 
 function ConditionsSection() {
   return (
-    <section className="relative bg-background snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
+    <section id="conditions" className="relative bg-subtle snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
-      {/* Scoped styles: fixed-height cards with icon circle and lift-on-hover */}
+      {/* Scoped styles: substantial cards that illuminate and lift on hover */}
       <style>{`
         .condition-card {
-          height: 120px;
+          min-height: 160px;
           background-color: var(--color-background);
           border: 0.5px solid color-mix(in oklch, var(--color-text) 10%, transparent);
-          border-left: 2px solid var(--color-accent);
-          border-radius: 8px;
-          padding: 18px 20px;
+          border-radius: 12px;
+          padding: 32px;
           display: flex;
           flex-direction: column;
-          gap: 10px;
-          transition: transform 200ms ease, box-shadow 200ms ease;
+          gap: 16px;
+          transition: background-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
         }
         .condition-card:hover {
+          background-color: #E8F3F3;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px -4px color-mix(in oklch, var(--color-text) 12%, transparent);
         }
         .condition-icon-circle {
-          width: 36px;
-          height: 36px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
-          background-color: var(--color-accent);
+          background-color: #E8F3F3;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          transition: background-color 250ms ease;
+        }
+        .condition-card:hover .condition-icon-circle {
+          background-color: #ffffff;
         }
         .condition-card-title {
           font-family: var(--font-headline);
-          font-size: 13px;
+          font-size: 20px;
           font-weight: 300;
-          line-height: 1.35;
+          line-height: 1.3;
           color: var(--color-text);
+          transition: color 250ms ease;
+        }
+        .condition-card:hover .condition-card-title {
+          color: #1B6B6B;
+        }
+        /* Desktop: compact tiles so 12 tiles + headline fit one viewport */
+        @media (min-width: 1024px) {
+          .condition-card {
+            min-height: 112px;
+            padding: 20px 24px;
+            gap: 12px;
+          }
+          .condition-icon-circle {
+            width: 42px;
+            height: 42px;
+          }
+          .condition-card-title {
+            font-size: 18px;
+          }
         }
       `}</style>
 
       <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-8">
-        <p
-          className="text-xs font-semibold uppercase text-accent mb-4"
-          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
-        >
-          Conditions we can help with
-        </p>
-        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-12">
-          What we can help with
+        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-12 lg:mb-8">
+          What we can <em className="italic text-accent">help</em> with
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-4">
           {CONDITIONS.map(({ label, icon: Icon }) => (
             <div key={label} className="condition-card">
               <div className="condition-icon-circle">
-                <Icon size={16} strokeWidth={1.5} color="var(--color-background)" aria-hidden />
+                <Icon size={22} strokeWidth={1.5} color="#1B6B6B" aria-hidden />
               </div>
               <p className="condition-card-title">{label}</p>
             </div>
@@ -464,7 +525,7 @@ function FAQSection() {
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
       <div className="relative z-10 w-full mx-auto max-w-3xl px-6 lg:px-8">
-        <FAQTabs serviceCategory="gp-consultations" />
+        <FAQTabs serviceCategory="gp-consultations" title="FAQ" />
       </div>
     </section>
   )

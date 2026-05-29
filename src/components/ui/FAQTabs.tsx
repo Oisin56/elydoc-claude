@@ -220,7 +220,7 @@ function AccordionItem({
 
 export default function FAQTabs({
   serviceCategory,
-  title = 'Common questions',
+  title = 'FAQ',
 }: {
   serviceCategory: string
   title?: string
@@ -300,16 +300,11 @@ export default function FAQTabs({
 
       <div className="flex flex-col">
 
-        {/* Eyebrow */}
-        <p
-          className="text-xs font-semibold uppercase text-accent mb-4 shrink-0"
-          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
+        {/* Heading — large teal */}
+        <h2
+          className="font-headline text-5xl lg:text-6xl font-light tracking-tight mb-6 shrink-0"
+          style={{ color: 'var(--color-accent)' }}
         >
-          FAQ
-        </p>
-
-        {/* Title */}
-        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-6 shrink-0">
           {title}
         </h2>
 
