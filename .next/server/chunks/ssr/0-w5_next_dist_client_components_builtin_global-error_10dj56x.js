@@ -1,3 +1,0 @@
-module.exports=[436805,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(709301);a.n(d("[project]/Desktop/ElyDoc-Claude/elydoc-claude/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},889006,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(709301);a.n(d("[project]/Desktop/ElyDoc-Claude/elydoc-claude/node_modules/next/dist/client/components/builtin/global-error.js"))},694893,a=>{"use strict";a.i(436805);var b=a.i(889006);a.n(b)},399183,a=>{a.n(a.i(694893))}];
-
-//# sourceMappingURL=0-w5_next_dist_client_components_builtin_global-error_10dj56x.js.map
