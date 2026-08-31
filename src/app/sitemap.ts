@@ -4,6 +4,15 @@ import { sanityClient } from '@/lib/sanity'
 const BASE = 'https://elygp.ie'
 
 /*
+  Blog posts are withheld from the sitemap until the /blog/[slug] route is
+  built — publishing their URLs now would point crawlers at 404s.
+
+  To restore: build /blog/[slug], then flip this to true. The Sanity fetch
+  below is left intact and working, so no other change is needed.
+*/
+const BLOG_ROUTE_EXISTS: boolean = false
+
+/*
   Only routes that actually exist belong here — listing unbuilt pages would
   serve 404s to crawlers.
 
@@ -35,10 +44,8 @@ async function getBlogSlugs(): Promise<string[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogSlugs = await getBlogSlugs()
+  const blogSlugs = BLOG_ROUTE_EXISTS ? await getBlogSlugs() : []
 
-  // These resolve only once the /blog/[slug] route exists — until then this
-  // yields entries for any published Sanity post that the site cannot serve.
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE}/blog/${slug}`,
     changeFrequency: 'weekly',
