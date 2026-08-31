@@ -47,7 +47,7 @@ export default function Nav() {
   function handleAboutClick(e: React.MouseEvent<HTMLAnchorElement>) {
     if (isHome) {
       e.preventDefault()
-      smoothScrollTo('why-elydoc')
+      smoothScrollTo('why-elygp')
     }
     setMobileOpen(false)
   }
@@ -71,7 +71,7 @@ export default function Nav() {
           href="/"
           className="font-headline text-xl lg:text-2xl text-text tracking-tight"
         >
-          ElyDoc
+          ElyGP
         </Link>
 
         {/* Desktop links */}
@@ -120,7 +120,7 @@ export default function Nav() {
 
           {/* About — smart link */}
           <Link
-            href={isHome ? '#why-elydoc' : '/about'}
+            href={isHome ? '#why-elygp' : '/about'}
             onClick={handleAboutClick}
             className="text-sm text-text hover:text-accent transition-colors"
           >
@@ -201,7 +201,7 @@ export default function Nav() {
           <ul className="space-y-4">
             <li>
               <Link
-                href={isHome ? '#why-elydoc' : '/about'}
+                href={isHome ? '#why-elygp' : '/about'}
                 onClick={handleAboutClick}
                 className="text-sm text-text hover:text-accent transition-colors"
               >

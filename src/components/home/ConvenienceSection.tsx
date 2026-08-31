@@ -55,7 +55,7 @@ function PhoneMockup() {
               className="font-headline text-[15px] font-normal text-text"
               style={{ letterSpacing: '-0.01em' }}
             >
-              ElyDoc
+              ElyGP
             </span>
             <div className="flex gap-[2px] items-end">
               {[5, 8, 11, 14].map((h, i) => (

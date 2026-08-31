@@ -1,8 +1,8 @@
-# ElyDoc — Project Brief
+# ElyGP — Project Brief
 
 ## What We're Building
 
-A premium marketing website for ElyDoc (elydoc.ie), a business name of Ely Health and Wellness Group. ElyDoc is an Irish online GP clinic offering doctor-led consultations for selected non-emergency conditions.
+A premium marketing website for ElyGP (elygp.ie), a business name of Ely Health and Wellness Group. ElyGP is an Irish online GP clinic offering doctor-led consultations for selected non-emergency conditions.
 
 Tech stack: Next.js (App Router), Tailwind CSS, Sanity CMS, deployed on Vercel.
 
@@ -53,12 +53,12 @@ Never write:
 - No questions asked
 - Miracle weight loss or aggressive body transformation language
 - Hype, urgency or scarcity language of any kind
-- Anything implying ElyDoc prescribes opioids, benzodiazepines, sleeping tablets or controlled drugs
-- Anything suggesting ElyDoc manages or refers for ADHD
+- Anything implying ElyGP prescribes opioids, benzodiazepines, sleeping tablets or controlled drugs
+- Anything suggesting ElyGP manages or refers for ADHD
 
 Emergency safety copy — include on all relevant pages:
 
-"If you are experiencing a medical emergency, chest pain, stroke symptoms or severe acute illness, please call 999 or attend your nearest Emergency Department immediately. ElyDoc is not an emergency service."
+"If you are experiencing a medical emergency, chest pain, stroke symptoms or severe acute illness, please call 999 or attend your nearest Emergency Department immediately. ElyGP is not an emergency service."
 
 ## Audiences
 
@@ -68,7 +68,7 @@ Adults in Ireland seeking convenient, private, GP-led care for suitable conditio
 
 ### Secondary — Employers
 
-HR managers and business owners considering ElyDoc as an employee benefit. Slightly more formal tone. Key messages: specialist GP care, confidential, convenient, modern employee benefit. Primary CTA: contact for demo/pricing.
+HR managers and business owners considering ElyGP as an employee benefit. Slightly more formal tone. Key messages: specialist GP care, confidential, convenient, modern employee benefit. Primary CTA: contact for demo/pricing.
 
 ## Site Structure
 

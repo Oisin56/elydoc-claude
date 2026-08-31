@@ -1,4 +1,4 @@
-# ElyDoc — Image Handling
+# ElyGP — Image Handling
 
 ## Technical Rules
 
@@ -31,9 +31,9 @@ This ensures Next.js serves correctly optimised images at every screen size.
 
 Use `picsum.photos` with named seeds to keep images consistent between page loads:
 
-`https://picsum.photos/seed/elydoc-hero/1440/900`
+`https://picsum.photos/seed/elygp-hero/1440/900`
 
-Name seeds descriptively — elydoc-hero, elydoc-weight, elydoc-hair etc. Use realistic dimensions for each intended use case so layouts can be properly evaluated.
+Name seeds descriptively — elygp-hero, elygp-weight, elygp-hair etc. Use realistic dimensions for each intended use case so layouts can be properly evaluated.
 
 ## Image Config File
 
@@ -53,7 +53,7 @@ This makes every image on the site findable and replaceable with a single line c
 
 - Logo files placed in `/public/images/logo/`
 - A light version of the logo is required for the dark footer background
-- Until final logo files are received use a typographic placeholder — the word ElyDoc set in the heading font
+- Until final logo files are received use a typographic placeholder — the word ElyGP set in the heading font
 - Logo appears in: navigation bar, footer, Open Graph social share image, favicon
 
 Shall we move on to security.md?

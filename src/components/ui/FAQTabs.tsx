@@ -51,17 +51,17 @@ const PLACEHOLDERS: Record<CategoryKey, FAQEntry[]> = {
     {
       _id: 'ph-a-1', category: 'about',
       question: 'What conditions can an online GP treat?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyDoc GPs can help with a wide range of non-emergency primary care concerns — skin conditions, medication queries, mild-to-moderate mental health concerns, digestive issues, women\'s and men\'s health, respiratory conditions, allergies and musculoskeletal issues.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyGP GPs can help with a wide range of non-emergency primary care concerns — skin conditions, medication queries, mild-to-moderate mental health concerns, digestive issues, women\'s and men\'s health, respiratory conditions, allergies and musculoskeletal issues.' }] }],
     },
     {
       _id: 'ph-a-2', category: 'about',
       question: 'Are your GPs registered with the Irish Medical Council?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Yes. All ElyDoc doctors are registered on the Specialist Division for General Practice with the Irish Medical Council, and are full active members of the ICGP.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Yes. All ElyGP doctors are registered on the Specialist Division for General Practice with the Irish Medical Council, and are full active members of the ICGP.' }] }],
     },
     {
       _id: 'ph-a-3', category: 'about',
       question: 'Is this service available across Ireland?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Yes. ElyDoc is available to patients anywhere in the Republic of Ireland by video or phone.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Yes. ElyGP is available to patients anywhere in the Republic of Ireland by video or phone.' }] }],
     },
   ],
   'booking-and-pricing': [
@@ -85,7 +85,7 @@ const PLACEHOLDERS: Record<CategoryKey, FAQEntry[]> = {
     {
       _id: 'ph-t-1', category: 'treatment',
       question: 'Can I get a prescription from an online GP?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyDoc can provide bridging prescriptions for established medications and short-term treatments for suitable conditions. We do not generally initiate new long-term medications and do not prescribe controlled drugs.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyGP can provide bridging prescriptions for established medications and short-term treatments for suitable conditions. We do not generally initiate new long-term medications and do not prescribe controlled drugs.' }] }],
     },
     {
       _id: 'ph-t-2', category: 'treatment',
@@ -102,17 +102,17 @@ const PLACEHOLDERS: Record<CategoryKey, FAQEntry[]> = {
     {
       _id: 'ph-s-1', category: 'safety',
       question: 'What if I need emergency care?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyDoc is not an emergency service. If you are experiencing a medical emergency, chest pain, stroke symptoms or severe acute illness, please call 999 or attend your nearest Emergency Department immediately.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyGP is not an emergency service. If you are experiencing a medical emergency, chest pain, stroke symptoms or severe acute illness, please call 999 or attend your nearest Emergency Department immediately.' }] }],
     },
     {
       _id: 'ph-s-2', category: 'safety',
       question: 'Is this service suitable for children?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyDoc is for patients aged 12 and over. Patients aged 12–18 are welcome but a parent or guardian must be present throughout the consultation. ElyDoc is not suitable for children under 12.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'ElyGP is for patients aged 12 and over. Patients aged 12–18 are welcome but a parent or guardian must be present throughout the consultation. ElyGP is not suitable for children under 12.' }] }],
     },
     {
       _id: 'ph-s-3', category: 'safety',
       question: 'What conditions are not suitable for online consultation?',
-      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Medical emergencies, chest pain, stroke symptoms, severe acute illness, conditions requiring physical examination or blood tests, acute mental health crises, and ADHD assessment or management are not suitable for ElyDoc.' }] }],
+      answer: [{ _type: 'block', children: [{ _key: '1', text: 'Medical emergencies, chest pain, stroke symptoms, severe acute illness, conditions requiring physical examination or blood tests, acute mental health crises, and ADHD assessment or management are not suitable for ElyGP.' }] }],
     },
   ],
 }

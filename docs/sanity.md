@@ -1,4 +1,4 @@
-# ElyDoc — Sanity CMS
+# ElyGP — Sanity CMS
 
 ## What Sanity Manages
 

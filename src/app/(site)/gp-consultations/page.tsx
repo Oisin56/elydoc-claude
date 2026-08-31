@@ -19,18 +19,18 @@ const DIAGONAL_TEXTURE = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Online GP Consultations Ireland — ElyDoc',
+    title: 'Online GP Consultations Ireland — ElyGP',
     description:
       'Book an online GP consultation with a vocationally trained Irish GP. Same day appointments available. Registered with the Irish Medical Council.',
     alternates: {
-      canonical: 'https://elydoc.ie/gp-consultations',
+      canonical: 'https://elygp.ie/gp-consultations',
     },
     openGraph: {
-      title: 'Online GP Consultations Ireland — ElyDoc',
+      title: 'Online GP Consultations Ireland — ElyGP',
       description:
         'Book an online GP consultation with a vocationally trained Irish GP. Same day appointments available.',
-      url: 'https://elydoc.ie/gp-consultations',
-      siteName: 'ElyDoc',
+      url: 'https://elygp.ie/gp-consultations',
+      siteName: 'ElyGP',
       locale: 'en_IE',
       type: 'website',
       images: [
@@ -38,13 +38,13 @@ export async function generateMetadata(): Promise<Metadata> {
           url: '/images/og-default.jpg',
           width: 1200,
           height: 630,
-          alt: 'Online GP Consultations Ireland — ElyDoc',
+          alt: 'Online GP Consultations Ireland — ElyGP',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Online GP Consultations Ireland — ElyDoc',
+      title: 'Online GP Consultations Ireland — ElyGP',
       description:
         'Book an online GP consultation with a vocationally trained Irish GP. Same day appointments available.',
       images: ['/images/og-default.jpg'],
@@ -57,8 +57,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const medicalWebPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
-  name: 'Online GP Consultations Ireland — ElyDoc',
-  url: 'https://elydoc.ie/gp-consultations',
+  name: 'Online GP Consultations Ireland — ElyGP',
+  url: 'https://elygp.ie/gp-consultations',
   description: 'Doctor-led online GP consultations for suitable conditions in Ireland.',
   medicalAudience: {
     '@type': 'MedicalAudience',
@@ -451,7 +451,7 @@ function ConditionsSection() {
           transition: background-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
         }
         .condition-card:hover {
-          background-color: #E8F3F3;
+          background-color: var(--color-accent-wash);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
           transform: translateY(-2px);
         }
@@ -459,7 +459,7 @@ function ConditionsSection() {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background-color: #E8F3F3;
+          background-color: var(--color-accent-wash);
           display: flex;
           align-items: center;
           justify-content: center;

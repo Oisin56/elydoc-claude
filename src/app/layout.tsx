@@ -16,10 +16,23 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://elydoc.ie'),
+  metadataBase: new URL('https://elygp.ie'),
+  /*
+    REMOVE BEFORE LAUNCH — this blocks all search engine indexing.
+    Paired with the site-wide disallow in src/app/robots.ts. Both must be
+    removed together when the site goes live.
+  */
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   title: {
-    default: 'ElyDoc — Online GP Consultations Ireland',
-    template: '%s | ElyDoc',
+    default: 'ElyGP — Online GP Consultations Ireland',
+    template: '%s | ElyGP',
   },
   description:
     'Doctor-led online healthcare for suitable conditions in Ireland. Book a consultation with a specialist-trained GP today.',

@@ -3,14 +3,14 @@ import { getRecentPosts } from '@/lib/blog'
 import HeroSection from '@/components/home/HeroSection'
 import ConvenienceSection from '@/components/home/ConvenienceSection'
 import ServicesSection from '@/components/home/ServicesSection'
-import WhyElyDocSection from '@/components/home/WhyElyDocSection'
+import WhyElyGPSection from '@/components/home/WhyElyGPSection'
 import EmployerSection from '@/components/home/EmployerSection'
 import BlogPreviewSection from '@/components/home/BlogPreviewSection'
 import FinalCTASection from '@/components/home/FinalCTASection'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'ElyDoc — Online GP Consultations Ireland',
+    title: 'ElyGP — Online GP Consultations Ireland',
     description:
       'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council. Same day appointments available.',
     keywords: [
@@ -21,14 +21,14 @@ export async function generateMetadata(): Promise<Metadata> {
       'online doctor consultation Ireland',
     ],
     alternates: {
-      canonical: 'https://elydoc.ie',
+      canonical: 'https://elygp.ie',
     },
     openGraph: {
-      title: 'ElyDoc — Online GP Consultations Ireland',
+      title: 'ElyGP — Online GP Consultations Ireland',
       description:
         'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council.',
-      url: 'https://elydoc.ie',
-      siteName: 'ElyDoc',
+      url: 'https://elygp.ie',
+      siteName: 'ElyGP',
       locale: 'en_IE',
       type: 'website',
       images: [
@@ -36,13 +36,13 @@ export async function generateMetadata(): Promise<Metadata> {
           url: '/images/og-default.jpg',
           width: 1200,
           height: 630,
-          alt: 'ElyDoc — Online GP Consultations Ireland',
+          alt: 'ElyGP — Online GP Consultations Ireland',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'ElyDoc — Online GP Consultations Ireland',
+      title: 'ElyGP — Online GP Consultations Ireland',
       description:
         'Doctor-led online GP consultations for suitable conditions in Ireland. Vocationally trained GPs registered with the Irish Medical Council.',
       images: ['/images/og-default.jpg'],
@@ -53,9 +53,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const medicalBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
-  name: 'ElyDoc',
+  name: 'ElyGP',
   alternateName: 'Ely Health and Wellness Group',
-  url: 'https://elydoc.ie',
+  url: 'https://elygp.ie',
   description: 'Doctor-led online healthcare for suitable conditions in Ireland.',
   medicalSpecialty: 'General Practice',
   address: {
@@ -67,9 +67,9 @@ const medicalBusinessSchema = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'ElyDoc',
+  name: 'ElyGP',
   alternateName: 'Ely Health and Wellness Group',
-  url: 'https://elydoc.ie',
+  url: 'https://elygp.ie',
   description: 'Doctor-led online healthcare for suitable conditions in Ireland.',
   address: {
     '@type': 'PostalAddress',
@@ -79,7 +79,7 @@ const localBusinessSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'hello@elydoc.ie',
+    email: 'support@elygp.ie',
     contactType: 'customer service',
   },
 }
@@ -106,7 +106,7 @@ export default async function HomePage() {
         <HeroSection />
         <ConvenienceSection />
         <ServicesSection />
-        <WhyElyDocSection />
+        <WhyElyGPSection />
         <BlogPreviewSection posts={posts} />
         <EmployerSection />
         <FinalCTASection />

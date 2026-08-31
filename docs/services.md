@@ -1,4 +1,4 @@
-# ElyDoc — Services & Pricing
+# ElyGP — Services & Pricing
 
 ## Pricing Display Rules
 
@@ -52,13 +52,13 @@ This service is not suitable for:
 
 ### 4. Sick Certification
 
-ElyDoc may provide employer and work absence notes where clinically appropriate, following a brief GP consultation.
+ElyGP may provide employer and work absence notes where clinically appropriate, following a brief GP consultation.
 
 This service provides employer notes only.
 
 Important limitations:
 
-- ElyDoc does NOT currently provide Illness Benefit or IB1 social welfare certification
+- ElyGP does NOT currently provide Illness Benefit or IB1 social welfare certification
 - Certification is not automatic or guaranteed — clinical assessment is required
 - Never use language implying instant or guaranteed certification
 
@@ -76,7 +76,7 @@ Prescriptions:
 
 A limited prescription service is available. This may include bridging prescriptions (a short term prescription for a medication you are already appropriately established on), short-term treatments and longer-term treatment for selected suitable conditions.
 
-ElyDoc does NOT prescribe:
+ElyGP does NOT prescribe:
 
 - Morphine/Oxynorm/Oxycontin/Palexia or other strong opioids
 - Benzodiazepines
@@ -86,9 +86,9 @@ ElyDoc does NOT prescribe:
 - Vaccines
 
 
-ElyDoc does NOT:
+ElyGP does NOT:
 
-## What ElyDoc Does Not Manage
+## What ElyGP Does Not Manage
 
 The following must be clearly communicated and framed as clinical responsibility, not limitation:
 
@@ -102,7 +102,7 @@ The following must be clearly communicated and framed as clinical responsibility
 - ADHD assessment or management or referral to private ADHD clinics
 - Pregancy related medical concerns 
 
-Always frame this section positively — ElyDoc takes clinical boundaries seriously because patient safety is the priority, not because of service limitations.
+Always frame this section positively — ElyGP takes clinical boundaries seriously because patient safety is the priority, not because of service limitations.
 
 Each service page includes a short FAQ section. These are managed via Sanity as FAQItems filtered by service category.
 
@@ -116,7 +116,7 @@ Subtly reinforce that not all online doctor services are delivered by specialist
 
 ## Employer Services
 
-ElyDoc offers online GP services as an employee benefit for employers.
+ElyGP offers online GP services as an employee benefit for employers.
 
 Positioning: "Convenient specialist GP-led online healthcare for employees."
 

@@ -1,8 +1,8 @@
-# ElyDoc — Security Requirements
+# ElyGP — Security Requirements
 
 ## Core Principle
 
-ElyDoc is a marketing site with no patient portal, no stored health data and no payment processing. The attack surface is small. Security should be implemented cleanly and correctly rather than over-engineered.
+ElyGP is a marketing site with no patient portal, no stored health data and no payment processing. The attack surface is small. Security should be implemented cleanly and correctly rather than over-engineered.
 
 ## HTTP Security Headers
 
@@ -31,7 +31,7 @@ const securityHeaders = [
 
 ## Forms
 
-- Formspree domain restriction enabled — forms accept submissions from elydoc.ie only
+- Formspree domain restriction enabled — forms accept submissions from elygp.ie only
 - Honeypot spam protection enabled on all Formspree forms
 
 ## Sanity Studio

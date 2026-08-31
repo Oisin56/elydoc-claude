@@ -20,7 +20,7 @@ export default function ServicesSection() {
           transition: background-color 200ms ease, box-shadow 200ms ease;
         }
         .service-card:hover {
-          background-color: #E8F3F3;
+          background-color: var(--color-accent-wash);
           box-shadow:
             inset 0 2px 0 0 var(--color-accent),
             0 8px 28px -6px color-mix(in oklch, var(--color-text) 14%, transparent);

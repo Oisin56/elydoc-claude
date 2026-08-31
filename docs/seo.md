@@ -1,4 +1,4 @@
-# ElyDoc — SEO Requirements
+# ElyGP — SEO Requirements
 
 ## Core Principles
 
@@ -35,9 +35,9 @@ MedicalBusiness — site-wide:
 ```json
 {
   "@type": "MedicalBusiness",
-  "name": "ElyDoc",
+  "name": "ElyGP",
   "alternateName": "Ely Health and Wellness Group",
-  "url": "https://elydoc.ie",
+  "url": "https://elygp.ie",
   "description": "Doctor-led online healthcare for suitable conditions in Ireland.",
   "medicalSpecialty": "General Practice",
   "address": {

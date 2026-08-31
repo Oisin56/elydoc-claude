@@ -25,7 +25,7 @@ export default function Footer() {
 
           {/* Column 1 — Brand */}
           <div className="space-y-4">
-            <p className="font-headline text-xl tracking-tight">ElyDoc</p>
+            <p className="font-headline text-xl tracking-tight">ElyGP</p>
             <p className="text-sm leading-relaxed" style={{ opacity: 0.6 }}>
               Doctor-led online healthcare for suitable conditions in Ireland.
             </p>
@@ -110,22 +110,22 @@ export default function Footer() {
           }}
         >
           <div className="space-y-1">
-            <p>© 2025 Ely Health and Wellness Group Ltd trading as ElyDoc</p>
+            <p>© 2026 Ely Health and Wellness Group Ltd trading as ElyGP</p>
             <p>77 Camden Street Lower, Dublin, Ireland</p>
           </div>
 
           <div className="flex items-center gap-5">
             <a
-              href="mailto:hello@elydoc.ie"
+              href="mailto:support@elygp.ie"
               className="transition-opacity hover:opacity-100"
             >
-              hello@elydoc.ie
+              support@elygp.ie
             </a>
             <a
               href="https://www.linkedin.com/company/elydoc"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="ElyDoc on LinkedIn"
+              aria-label="ElyGP on LinkedIn"
               className="transition-opacity hover:opacity-100"
             >
               <LinkedInIcon />

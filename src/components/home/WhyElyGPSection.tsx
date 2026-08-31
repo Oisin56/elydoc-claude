@@ -31,9 +31,9 @@ const WHY_TILES = [
   },
 ]
 
-export default function WhyElyDocSection() {
+export default function WhyElyGPSection() {
   return (
-    <section id="why-elydoc" className="snap-section" style={{ backgroundColor: 'var(--color-teal-dark)', minHeight: 'var(--section-min-height)' }}>
+    <section id="why-elygp" className="snap-section" style={{ backgroundColor: 'var(--color-teal-dark)', minHeight: 'var(--section-min-height)' }}>
       {/* Scoped hover styles */}
       <style>{`
         .why-tile {
@@ -76,7 +76,7 @@ export default function WhyElyDocSection() {
                 className="font-headline text-3xl lg:text-4xl tracking-tight"
                 style={{ fontWeight: 300, color: 'var(--color-background)' }}
               >
-                Why choose <em className="italic">ElyDoc</em>
+                Why choose <em className="italic">ElyGP</em>
               </h2>
             </div>
 

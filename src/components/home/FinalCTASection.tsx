@@ -50,7 +50,7 @@ export default function FinalCTASection() {
             >
               If you are experiencing a medical emergency, chest pain, stroke symptoms or severe
               acute illness, please call 999 or attend your nearest Emergency Department
-              immediately. ElyDoc is not an emergency service.
+              immediately. ElyGP is not an emergency service.
             </p>
           </div>
         </div>
