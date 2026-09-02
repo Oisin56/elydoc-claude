@@ -4,7 +4,7 @@ import Tile from '@/components/ui/Tile'
 const EMPLOYER_TILES = [
   {
     title: 'Boost employee wellbeing',
-    description: 'Give your team fast access to specialist GP care when they need it.',
+    description: 'Give your team fast access to GP care when they need it.',
   },
   {
     title: 'Reduce workplace absence',
@@ -50,7 +50,7 @@ export default function EmployerSection() {
           </h2>
 
           <p className="text-base lg:text-lg leading-relaxed" style={{ opacity: 0.65 }}>
-            Offer your team access to specialist GP care — fast, flexible and doctor-led.
+            Offer your team access to GP care — fast, flexible and doctor-led.
           </p>
 
           <div>

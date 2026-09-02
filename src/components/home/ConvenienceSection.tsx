@@ -209,7 +209,7 @@ export default function ConvenienceSection() {
             style={{ opacity: 0.68 }}
           >
             Same day appointments available for suitable conditions. Consult by video
-            or phone — no waiting rooms, no travel. Specialist GP care when you need it.
+            or phone — no waiting rooms, no travel. GP care when you need it.
           </p>
 
           <Link

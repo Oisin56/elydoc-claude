@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: '%s | ElyGP',
   },
   description:
-    'Doctor-led online healthcare for suitable conditions in Ireland. Book a consultation with a specialist-trained GP today.',
+    'Doctor-led online healthcare for suitable conditions in Ireland. Book a consultation with a vocationally trained GP today.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

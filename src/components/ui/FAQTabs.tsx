@@ -220,9 +220,11 @@ function AccordionItem({
 
 export default function FAQTabs({
   serviceCategory,
-  title = 'FAQ',
+  eyebrow = 'FAQ',
+  title = 'Common questions',
 }: {
   serviceCategory: string
+  eyebrow?: string
   title?: string
 }) {
   const [items, setItems]         = useState<FAQEntry[]>([])
@@ -293,18 +295,23 @@ export default function FAQTabs({
         @media (min-width: 1024px) {
           .faq-tabs-scroll {
             overflow-y: auto;
-            max-height: calc(100svh - var(--section-padding) * 2 - 160px);
+            /* Reserve room for the eyebrow, headline and tab bar above. */
+            max-height: calc(100svh - var(--section-padding) * 2 - 190px);
           }
         }
       `}</style>
 
       <div className="flex flex-col">
 
-        {/* Heading — large teal */}
-        <h2
-          className="font-headline text-5xl lg:text-6xl font-light tracking-tight mb-6 shrink-0"
-          style={{ color: 'var(--color-accent)' }}
+        {/* Heading block — matches the eyebrow + headline pattern used by
+            every other section on the page. Left-aligned. */}
+        <p
+          className="text-xs font-semibold uppercase text-accent mb-4 shrink-0 text-left"
+          style={{ letterSpacing: '0.1em', opacity: 0.85 }}
         >
+          {eyebrow}
+        </p>
+        <h2 className="font-headline text-3xl lg:text-4xl font-light tracking-tight mb-8 shrink-0 text-left">
           {title}
         </h2>
 

@@ -97,7 +97,7 @@ const STEPS = [
   },
   {
     n: '02',
-    content: 'Consult with a specialist GP by video or phone.',
+    content: 'Consult with a vocationally trained GP by video or phone.',
   },
   {
     n: '03',
@@ -243,6 +243,12 @@ function PageHeader() {
               >
                 Book a Consultation
               </Link>
+              <span
+                className="text-sm font-medium"
+                style={{ color: 'var(--color-accent)' }}
+              >
+                €55 per consultation
+              </span>
               <Link
                 href="#conditions"
                 className="text-sm font-medium transition-colors hover:text-accent"
@@ -325,8 +331,9 @@ function SuitabilitySection() {
     <section className="relative snap-section" style={{ minHeight: 'var(--section-min-height)' }}>
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 lg:h-full">
 
-        {/* Left: Suitable for — white background */}
-        <div className="relative bg-background lg:flex lg:flex-col lg:justify-start" style={{ paddingBlock: 'var(--section-padding)' }}>
+        {/* Left: Suitable for — white background. Each column centres its own
+            content independently within its full-height column on desktop. */}
+        <div className="relative bg-background lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)' }}>
           <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
           <div className="relative z-10 mx-auto max-w-lg px-6 lg:px-0 lg:ml-auto lg:mr-0 lg:pr-12 xl:pr-20">
             <p
@@ -366,7 +373,7 @@ function SuitabilitySection() {
         </div>
 
         {/* Right: Not suitable for — subtle background */}
-        <div className="relative lg:flex lg:flex-col lg:justify-start" style={{ backgroundColor: 'var(--color-subtle)', paddingBlock: 'var(--section-padding)' }}>
+        <div className="relative lg:flex lg:flex-col lg:justify-center" style={{ backgroundColor: 'var(--color-subtle)', paddingBlock: 'var(--section-padding)' }}>
           <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
           <div className="relative z-10 mx-auto max-w-lg px-6 lg:px-0 lg:mr-auto lg:ml-0 lg:pl-12 xl:pl-20">
             <p
@@ -524,8 +531,8 @@ function FAQSection() {
     <section className="relative bg-subtle snap-section lg:flex lg:flex-col lg:justify-center" style={{ paddingBlock: 'var(--section-padding)', minHeight: 'var(--section-min-height)' }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={DIAGONAL_TEXTURE} />
 
-      <div className="relative z-10 w-full mx-auto max-w-3xl px-6 lg:px-8">
-        <FAQTabs serviceCategory="gp-consultations" title="FAQ" />
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-6 lg:px-8">
+        <FAQTabs serviceCategory="gp-consultations" />
       </div>
     </section>
   )

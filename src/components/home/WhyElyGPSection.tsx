@@ -16,7 +16,7 @@ const WHY_TILES = [
   },
   {
     title: 'Same day appointments',
-    description: 'Fast access to specialist GP care for suitable conditions — available today.',
+    description: 'Fast access to GP care for suitable conditions — available today.',
     icon: CalendarCheck,
   },
   {
