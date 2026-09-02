@@ -284,7 +284,7 @@ export default function FAQTabs({
       {/*
         Desktop: content area is max-height constrained so it scrolls internally
         within the 100svh snap section without overflowing it.
-        160px ≈ eyebrow + title + tab bar + buffer.
+        190px ≈ eyebrow + title + tab bar + buffer.
       */}
       <style>{`
         .faq-tabs-scroll {
@@ -315,52 +315,61 @@ export default function FAQTabs({
           {title}
         </h2>
 
-        {/* Tab bar */}
-        <div
-          className="shrink-0 flex overflow-x-auto"
-          style={{
-            scrollbarWidth: 'none',
-            borderBottom: '1px solid color-mix(in oklch, var(--color-text) 10%, transparent)',
-          } as CSSProperties}
-        >
-          {visibleTabs.map((tab) => (
-            <button
-              key={tab.value}
-              onClick={() => handleTabChange(tab.value)}
-              className="shrink-0 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
-              style={{
-                color: activeTab === tab.value
-                  ? 'var(--color-accent)'
-                  : 'color-mix(in oklch, var(--color-text) 42%, transparent)',
-                borderBottom: activeTab === tab.value
-                  ? '2px solid var(--color-accent)'
-                  : '2px solid transparent',
-                marginBottom: '-1px',
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/*
+          Tabs and accordion sit on a narrower measure than the heading: it keeps
+          the plus icon beside its question and the answer text at a comfortable
+          line length, while the left edge still lines up with the heading above.
+        */}
+        <div className="flex flex-col min-h-0 w-full max-w-4xl">
 
-        {/* Accordion content — scrolls internally on desktop */}
-        <div className="faq-tabs-scroll">
+          {/* Tab bar */}
           <div
-            ref={contentRef}
+            className="shrink-0 flex overflow-x-auto"
             style={{
-              opacity: fading ? 0 : 1,
-              transition: 'opacity 150ms ease',
-            }}
+              scrollbarWidth: 'none',
+              borderBottom: '1px solid color-mix(in oklch, var(--color-text) 10%, transparent)',
+            } as CSSProperties}
           >
-            {!loading && displayItems.map((item) => (
-              <AccordionItem
-                key={item._id}
-                item={item}
-                isOpen={openItems.has(item._id)}
-                onToggle={() => toggleItem(item._id)}
-              />
+            {visibleTabs.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => handleTabChange(tab.value)}
+                className="shrink-0 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap"
+                style={{
+                  color: activeTab === tab.value
+                    ? 'var(--color-accent)'
+                    : 'color-mix(in oklch, var(--color-text) 42%, transparent)',
+                  borderBottom: activeTab === tab.value
+                    ? '2px solid var(--color-accent)'
+                    : '2px solid transparent',
+                  marginBottom: '-1px',
+                }}
+              >
+                {tab.label}
+              </button>
             ))}
           </div>
+
+          {/* Accordion content — scrolls internally on desktop */}
+          <div className="faq-tabs-scroll">
+            <div
+              ref={contentRef}
+              style={{
+                opacity: fading ? 0 : 1,
+                transition: 'opacity 150ms ease',
+              }}
+            >
+              {!loading && displayItems.map((item) => (
+                <AccordionItem
+                  key={item._id}
+                  item={item}
+                  isOpen={openItems.has(item._id)}
+                  onToggle={() => toggleItem(item._id)}
+                />
+              ))}
+            </div>
+          </div>
+
         </div>
 
       </div>
